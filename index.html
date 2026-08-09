@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA TECH — Tecnología para todos</title>
+<meta name="description" content="Tienda online de tecnología con carrito de compras y contacto por WhatsApp.">
+<style>
+:root{
+  --ink:#101828;--muted:#667085;--line:#eaecf0;--bg:#f8fafc;--card:#fff;
+  --green:#16a34a;--green-dark:#15803d;--accent:#7c3aed;--danger:#ef4444;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+button,input,select{font:inherit}.container{width:min(1160px,92%);margin:auto}
+.topbar{background:#101828;color:#fff;text-align:center;padding:9px;font-size:13px}
+nav{height:74px;border-bottom:1px solid var(--line);display:flex;align-items:center;background:#fff;position:sticky;top:0;z-index:20}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:min(1160px,92%);margin:auto}
+.logo{font-size:23px;font-weight:900;letter-spacing:-1px}.logo span{color:var(--accent)}
+.links{display:flex;gap:28px}.links a{text-decoration:none;color:#344054;font-size:14px;font-weight:600}
+.nav-actions{display:flex;gap:10px;align-items:center}.icon-btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 13px;cursor:pointer}
+.cart-btn{position:relative}.badge{position:absolute;right:-5px;top:-6px;background:var(--accent);color:#fff;width:21px;height:21px;border-radius:50%;font-size:11px;display:grid;place-items:center}
+.hero{background:linear-gradient(135deg,#f5f3ff 0%,#fff 48%,#ecfdf3 100%);padding:74px 0 68px}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:55px;align-items:center}
+.kicker{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:1.4px;font-size:12px}
+h1{font-size:clamp(42px,6vw,72px);line-height:.98;letter-spacing:-4px;margin:15px 0 22px}
+.hero p{font-size:18px;line-height:1.65;color:var(--muted);max-width:600px}
+.ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:13px 20px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.btn-primary{background:var(--ink);color:#fff}.btn-primary:hover{background:#263246}
+.btn-light{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.hero-card{min-height:370px;border-radius:28px;background:#111827;display:grid;place-items:center;overflow:hidden;position:relative;box-shadow:0 25px 60px rgba(16,24,40,.18)}
+.device{width:62%;aspect-ratio:1/1.25;border-radius:28px;background:linear-gradient(145deg,#ddd6fe,#fff);transform:rotate(-7deg);box-shadow:25px 25px 70px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px}
+.device .camera{width:45px;height:45px;border-radius:50%;background:#111827;box-shadow:0 0 0 8px #344054}
+.device .screen{width:70%;height:35%;border-radius:15px;background:linear-gradient(135deg,#7c3aed,#22c55e)}
+section{padding:72px 0}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}
+h2{font-size:34px;letter-spacing:-1.5px;margin:0}.section-head p{color:var(--muted);margin:8px 0 0}
+.filters{display:flex;gap:9px;flex-wrap:wrap}.filter{border:1px solid var(--line);background:#fff;padding:9px 14px;border-radius:999px;cursor:pointer;color:#475467}.filter.active{background:#101828;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden;transition:.2s;position:relative}
+.product:hover{transform:translateY(-4px);box-shadow:0 16px 35px rgba(16,24,40,.08)}
+.product-img{height:205px;background:#f2f4f7;display:grid;place-items:center;font-size:72px}
+.product-info{padding:17px}.category{font-size:11px;color:var(--muted);text-transform:uppercase;font-weight:800;letter-spacing:.8px}
+.product h3{margin:7px 0;font-size:16px}.price{font-size:20px;font-weight:900}.old{color:#98a2b3;text-decoration:line-through;font-size:13px;margin-left:5px}
+.add{width:100%;margin-top:13px;background:#101828;color:#fff;border:0;border-radius:10px;padding:11px;cursor:pointer;font-weight:800}
+.add:hover{background:var(--accent)}
+.benefits{background:#f8fafc}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.benefit{padding:25px;border:1px solid var(--line);border-radius:18px;background:#fff}.benefit strong{display:block;margin:10px 0 5px}.benefit p{color:var(--muted);margin:0;line-height:1.5}
+.newsletter{background:#101828;color:#fff;border-radius:28px;padding:42px;display:flex;justify-content:space-between;gap:30px;align-items:center}.newsletter p{color:#98a2b3}.newsletter form{display:flex;gap:8px}.newsletter input{padding:13px;border:0;border-radius:10px;min-width:260px}
+footer{background:#f8fafc;border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:14px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}.footer-title{font-weight:900;color:var(--ink);margin-bottom:10px}.footer a{display:block;color:var(--muted);text-decoration:none;margin:7px 0}
+.whatsapp{position:fixed;right:22px;bottom:22px;background:#25d366;color:#fff;text-decoration:none;border-radius:999px;padding:14px 18px;font-weight:900;box-shadow:0 12px 28px rgba(37,211,102,.35);z-index:40}
+.overlay{position:fixed;inset:0;background:rgba(16,24,40,.45);opacity:0;pointer-events:none;transition:.2s;z-index:50}.overlay.open{opacity:1;pointer-events:auto}
+.cart{position:absolute;right:0;top:0;height:100%;width:min(430px,94vw);background:#fff;display:flex;flex-direction:column;transform:translateX(100%);transition:.25s}.overlay.open .cart{transform:translateX(0)}
+.cart-head{padding:20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.cart-items{padding:18px;overflow:auto;flex:1}.cart-item{display:grid;grid-template-columns:62px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.mini{background:#f2f4f7;border-radius:10px;display:grid;place-items:center;font-size:28px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:8px}.qty button{border:1px solid var(--line);background:#fff;width:26px;height:26px;border-radius:7px;cursor:pointer}
+.cart-foot{border-top:1px solid var(--line);padding:18px}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:900;margin-bottom:13px}
+.empty{color:var(--muted);text-align:center;padding:50px 10px}.checkout{width:100%}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.links{display:none}.benefit-grid,.footer-grid{grid-template-columns:1fr}.newsletter{flex-direction:column;align-items:flex-start}}
+@media(max-width:540px){.grid{grid-template-columns:1fr}.hero{padding-top:48px}.newsletter{padding:28px}.newsletter form{width:100%;flex-direction:column}.newsletter input{min-width:0;width:100%}h1{letter-spacing:-2.5px}}
+</style>
+</head>
+<body>
+<div class="topbar">🚚 Envíos a todo el Perú · Compra segura · Atención personalizada por WhatsApp</div>
+<nav><div class="nav-inner">
+  <div class="logo">NOVA<span>TECH</span></div>
+  <div class="links"><a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#beneficios">Beneficios</a><a href="#contacto">Contacto</a></div>
+  <div class="nav-actions"><button class="icon-btn" onclick="openCart()">🛒 <span id="navCount">0</span></button></div>
+</div></nav>
+
+<main id="inicio">
+<section class="hero"><div class="container hero-grid">
+  <div>
+    <div class="kicker">Tecnología que inspira</div>
+    <h1>Tu próximo dispositivo empieza aquí.</h1>
+    <p>Descubre smartphones, laptops, audio y accesorios seleccionados para ofrecerte una experiencia moderna, rápida y confiable.</p>
+    <div class="ctas"><a class="btn btn-primary" href="#productos">Comprar ahora</a><a class="btn btn-light" href="#contacto">Hablar con nosotros</a></div>
+  </div>
+  <div class="hero-card"><div class="device"><div class="camera"></div><div class="screen"></div><strong>SMART</strong></div></div>
+</div></section>
+
+<section id="productos"><div class="container">
+  <div class="section-head"><div><h2>Productos destacados</h2><p>Selección tecnológica para tu día a día.</p></div></div>
+  <div class="filters" style="margin-bottom:24px">
+    <button class="filter active" onclick="filterProducts('Todos',this)">Todos</button>
+    <button class="filter" onclick="filterProducts('Celulares',this)">Celulares</button>
+    <button class="filter" onclick="filterProducts('Laptops',this)">Laptops</button>
+    <button class="filter" onclick="filterProducts('Audio',this)">Audio</button>
+    <button class="filter" onclick="filterProducts('Accesorios',this)">Accesorios</button>
+  </div>
+  <div class="grid" id="products"></div>
+</div></section>
+
+<section id="beneficios" class="benefits"><div class="container">
+  <div class="section-head"><div><h2>Compra con confianza</h2><p>Una experiencia simple, como debe ser.</p></div></div>
+  <div class="benefit-grid">
+    <div class="benefit"><div style="font-size:28px">🔒</div><strong>Compra segura</strong><p>Proceso de compra claro y protección para tus datos.</p></div>
+    <div class="benefit"><div style="font-size:28px">🚚</div><strong>Envíos rápidos</strong><p>Coordinamos la entrega de tus productos a todo el Perú.</p></div>
+    <div class="benefit"><div style="font-size:28px">💬</div><strong>Soporte por WhatsApp</strong><p>Resuelve tus dudas directamente con nuestro equipo.</p></div>
+  </div>
+</div></section>
+
+<section id="contacto"><div class="container"><div class="newsletter">
+  <div><h2>¿Necesitas ayuda?</h2><p>Escríbenos por WhatsApp y te ayudamos a elegir.</p></div>
+  <a class="btn" style="background:#25d366;color:#fff" target="_blank" href="https://wa.me/51957411135?text=Hola%20NOVA%20TECH,%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos.">WhatsApp</a>
+</div></div></section>
+</main>
+
+<footer><div class="container footer-grid">
+  <div><div class="logo">NOVA<span>TECH</span></div><p>Tecnología moderna, atención cercana.</p></div>
+  <div><div class="footer-title">Tienda</div><a href="#productos">Productos</a><a href="#beneficios">Beneficios</a></div>
+  <div><div class="footer-title">Contacto</div><a href="https://wa.me/51957411135" target="_blank">WhatsApp</a><a href="mailto:ventas@novatech.pe">ventas@novatech.pe</a></div>
+</div></footer>
+
+<a class="whatsapp" target="_blank" href="https://wa.me/51957411135?text=Hola%20NOVA%20TECH,%20quiero%20hacer%20una%20consulta.">💬 WhatsApp</a>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeCart()">
+  <aside class="cart">
+    <div class="cart-head"><strong>Tu carrito</strong><button class="icon-btn" onclick="closeCart()">✕</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot"><div class="total"><span>Total</span><span id="total">S/ 0.00</span></div><button class="btn btn-primary checkout" onclick="checkout()">Finalizar pedido por WhatsApp</button></div>
+  </aside>
+</div>
+
+<script>
+const products=[
+{id:1,name:"NovaPhone X Pro",cat:"Celulares",price:2899,old:3199,icon:"📱"},
+{id:2,name:"UltraBook Air 14",cat:"Laptops",price:3499,old:3899,icon:"💻"},
+{id:3,name:"SoundMax Pro",cat:"Audio",price:399,old:499,icon:"🎧"},
+{id:4,name:"SmartWatch Pulse",cat:"Accesorios",price:549,old:649,icon:"⌚"},
+{id:5,name:"NovaPhone Lite",cat:"Celulares",price:1199,old:1399,icon:"📱"},
+{id:6,name:"Gaming Mouse X1",cat:"Accesorios",price:159,old:199,icon:"🖱️"},
+{id:7,name:"Buds Air Pro",cat:"Audio",price:299,old:349,icon:"🎶"},
+{id:8,name:"PowerBank 20K",cat:"Accesorios",price:179,old:229,icon:"🔋"}
+];
+let cart=[];
+function money(n){return "S/ "+n.toLocaleString("es-PE",{minimumFractionDigits:2})}
+function renderProducts(list=products){
+ document.getElementById("products").innerHTML=list.map(p=>`
+ <article class="product"><div class="product-img">${p.icon}</div><div class="product-info">
+ <div class="category">${p.cat}</div><h3>${p.name}</h3><div><span class="price">${money(p.price)}</span><span class="old">${money(p.old)}</span></div>
+ <button class="add" onclick="addToCart(${p.id})">Agregar al carrito</button></div></article>`).join("");
+}
+function filterProducts(cat,el){document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));el.classList.add("active");renderProducts(cat==="Todos"?products:products.filter(p=>p.cat===cat))}
+function addToCart(id){let x=cart.find(i=>i.id===id);x?x.qty++:cart.push({id,qty:1});renderCart();openCart()}
+function changeQty(id,d){let x=cart.find(i=>i.id===id);if(!x)return;x.qty+=d;if(x.qty<=0)cart=cart.filter(i=>i.id!==id);renderCart()}
+function renderCart(){
+ let el=document.getElementById("cartItems");let count=cart.reduce((a,x)=>a+x.qty,0);document.getElementById("navCount").textContent=count;
+ if(!cart.length){el.innerHTML='<div class="empty">Tu carrito está vacío.<br>Agrega tus productos favoritos.</div>';document.getElementById("total").textContent=money(0);return}
+ el.innerHTML=cart.map(i=>{let p=products.find(x=>x.id===i.id);return `<div class="cart-item"><div class="mini">${p.icon}</div><div><strong>${p.name}</strong><div style="color:#667085;font-size:13px">${money(p.price)}</div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><span>${i.qty}</span><button onclick="changeQty(${p.id},1)">+</button></div></div><strong>${money(p.price*i.qty)}</strong></div>`}).join("");
+ let total=cart.reduce((a,i)=>a+products.find(p=>p.id===i.id).price*i.qty,0);document.getElementById("total").textContent=money(total);
+}
+function openCart(){document.getElementById("overlay").classList.add("open");renderCart()}
+function closeCart(){document.getElementById("overlay").classList.remove("open")}
+function checkout(){
+ if(!cart.length){alert("Agrega al menos un producto al carrito.");return}
+ let lines=cart.map(i=>{let p=products.find(x=>x.id===i.id);return `• ${p.name} x${i.qty} — ${money(p.price*i.qty)}`}).join("%0A");
+ let total=cart.reduce((a,i)=>a+products.find(p=>p.id===i.id).price*i.qty,0);
+ window.open(`https://wa.me/51957411135?text=Hola%20NOVA%20TECH,%20quiero%20realizar%20este%20pedido:%0A${lines}%0A%0ATotal:%20${encodeURIComponent(money(total))}`,"_blank");
+}
+renderProducts();renderCart();
+</script>
+</body>
+</html>
