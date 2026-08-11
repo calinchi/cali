@@ -420,16 +420,33 @@ function initNavbar() {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // Mobile menu
-  const toggle = $('menu-toggle');
-  const navLinks = $('nav-links');
-  toggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
-  navLinks.addEventListener('click', e => {
-    if (e.target.tagName === 'A') navLinks.classList.remove('open');
+  // Mobile drawer
+  const toggle   = $('menu-toggle');
+  const drawer   = $('mobile-drawer');
+  const overlay  = $('mobile-overlay');
+  const closeBtn = $('drawer-close');
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+
+  // Cerrar al tocar cualquier link del drawer
+  $$('.drawer-link').forEach(link => {
+    link.addEventListener('click', closeDrawer);
   });
 }
+
 
 // ─── PAYMENT MODAL ───────────────────────────────
 function openPaymentModal() {
